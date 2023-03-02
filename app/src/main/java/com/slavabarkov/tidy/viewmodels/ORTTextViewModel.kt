@@ -38,7 +38,7 @@ class ORTTextViewModel(application: Application) : AndroidViewModel(application)
 
     fun getTextEmbedding(text: String): FloatArray {
         // Tokenize
-        val textClean = queryFilter.replace(text, "")
+        val textClean = queryFilter.replace(text, "").lowercase()
         var tokens: MutableList<Int> = ArrayList()
         tokens.add(tokenBOS)
         tokens.addAll(tokenizer.encode(textClean))
