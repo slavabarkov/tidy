@@ -33,6 +33,9 @@ class ORTTextViewModel(application: Application) : AndroidViewModel(application)
 
     private val queryFilter = Regex("[^A-Za-z0-9 ]")
 
+    fun init() {
+    }
+
     fun getTextEmbedding(text: String): FloatArray {
         // Tokenize
         val textClean = queryFilter.replace(text, "")

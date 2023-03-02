@@ -52,6 +52,8 @@ class SearchFragment : Fragment() {
         recyclerView.adapter = ImageAdapter(requireContext(), mSearchViewModel.searchResults!!)
         recyclerView.scrollToPosition(0)
 
+        mORTTextViewModel.init()
+
         searchText = view?.findViewById(R.id.searchText)
         searchButton = view?.findViewById(R.id.searchButton)
 
