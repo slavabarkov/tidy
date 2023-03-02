@@ -1,7 +1,8 @@
 /**
  * Copyright 2023 Viacheslav Barkov
  * Copyright 2021 Microsoft Corporation.
- * The following code is a derivative work of the code from the ONNX Runtime project,
+ *
+ * Parts of the following code are a derivative work of the code from the ONNX Runtime project,
  * which is licensed MIT.
  */
 

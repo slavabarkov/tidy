@@ -121,6 +121,7 @@ class ORTImageViewModel(application: Application) : AndroidViewModel(application
                 }
             }
             cursor?.close()
+            session.close()
             progress.setValue(1.0)
         }
 
