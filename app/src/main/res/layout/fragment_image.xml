@@ -1,32 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ImageFragment"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".fragments.ImageFragment">
 
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            tools:ignore="NestedWeights" />
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="1 Jan, 2023"
+            android:textColor="#DE000000"
+            android:textSize="20sp"
+            android:typeface="normal" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/buttonShare"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="2dp"
+                app:icon="?attr/actionModeShareDrawable"
+                app:iconSize="28dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/singeImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="9"
+        android:layout_height="0dp"
+        android:layout_weight="83"
+        android:background="#f3f3f3"
         tools:src="@tools:sample/avatars" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="top|center">
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="7dp">
+
         <Button
             android:id="@+id/buttonImage2Image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Image to Image Search" />
 
     </LinearLayout>
-
-
 
 </LinearLayout>
