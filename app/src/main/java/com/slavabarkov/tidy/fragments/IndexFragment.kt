@@ -5,7 +5,6 @@
 package com.slavabarkov.tidy.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +46,6 @@ class IndexFragment : Fragment() {
         progressBarTextView = view.findViewById(R.id.progressBarText)
 
         mORTImageViewModel.progress.observe(viewLifecycleOwner) { progress ->
-            Log.d("MainActivity", "Progress: $progress")
             var progressPercent: Int = (progress * 100).toInt()
             progressBarView?.progress = progressPercent
             progressBarTextView?.text = "Updating image index: ${progressPercent}%"

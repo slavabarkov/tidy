@@ -8,7 +8,6 @@ import ai.onnxruntime.OnnxTensor
 import ai.onnxruntime.OrtEnvironment
 import android.app.Application
 import android.util.JsonReader
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.slavabarkov.tidy.R
 import com.slavabarkov.tidy.normalizeL2
@@ -43,7 +42,6 @@ class ORTTextViewModel(application: Application) : AndroidViewModel(application)
         tokens.add(tokenBOS)
         tokens.addAll(tokenizer.encode(textClean))
         tokens.add(tokenEOS)
-        Log.d("ORTTextViewModel", "Tokens: " + tokens.joinToString(" "))
 
         var mask: MutableList<Int> = ArrayList()
         for (i in 0 until tokens.size) {
@@ -55,8 +53,6 @@ class ORTTextViewModel(application: Application) : AndroidViewModel(application)
         }
         tokens = tokens.subList(0, 77)
         mask = mask.subList(0, 77)
-        Log.d("ORTTextViewModel", "Tokens, padded: " + tokens.joinToString(" "))
-        Log.d("ORTTextViewModel", "Attention mask, padded: " + mask.joinToString(" "))
 
         // Convert to tensor
         val inputShape = longArrayOf(1, 77)
@@ -82,16 +78,14 @@ class ORTTextViewModel(application: Application) : AndroidViewModel(application)
 
         val output = session?.run(inputMap)
         output.use {
-            @Suppress("UNCHECKED_CAST")
-            var rawOutput = ((output?.get(0)?.value) as Array<FloatArray>)[0]
-            Log.d("MainActivity", "Output: " + rawOutput.joinToString(" "))
-
+            @Suppress("UNCHECKED_CAST") var rawOutput =
+                ((output?.get(0)?.value) as Array<FloatArray>)[0]
             rawOutput = normalizeL2(rawOutput)
             return rawOutput
         }
     }
 
-    fun getVocab(): Map<String, Int>{
+    fun getVocab(): Map<String, Int> {
         val vocab = hashMapOf<String, Int>().apply {
             resources.openRawResource(R.raw.vocab).use {
                 val vocabReader = JsonReader(InputStreamReader(it, "UTF-8"))
@@ -107,7 +101,7 @@ class ORTTextViewModel(application: Application) : AndroidViewModel(application)
         return vocab
     }
 
-    fun getMerges(): HashMap<Pair<String, String>, Int>{
+    fun getMerges(): HashMap<Pair<String, String>, Int> {
         val merges = hashMapOf<Pair<String, String>, Int>().apply {
             resources.openRawResource(R.raw.merges).use {
                 val mergesReader = BufferedReader(InputStreamReader(it))

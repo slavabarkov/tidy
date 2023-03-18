@@ -13,7 +13,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import androidx.lifecycle.*
 import com.slavabarkov.tidy.R
 import com.slavabarkov.tidy.centerCrop
@@ -66,27 +65,21 @@ class ORTImageViewModel(application: Application) : AndroidViewModel(application
                     val id: Long = it.getLong(idColumn)
                     val date: Long = it.getLong(dateColumn)
                     val bucket: String = it.getString(bucketColumn)
+                    // Don't add screenshots to image index
                     if (bucket == "Screenshots") continue
-
-                    Log.d("ORTImageViewModel", "ID: $id, Date: $date, Bucket: $bucket")
                     val record = repository.getRecord(id) as ImageEmbedding?
                     if (record != null) {
-                        Log.d("ORTImageViewModel", "Record exists")
                         idxList.add(record.id)
                         embeddingsList.add(record.embedding)
                     } else {
-                        Log.d("ORTImageViewModel", "Record does not exist")
-
                         val imageUri: Uri = Uri.withAppendedPath(uri, id.toString())
                         val inputStream = contentResolver.openInputStream(imageUri)
                         val bytes = inputStream?.readBytes()
                         inputStream?.close()
-                        println("STREAM EMPTY: ${bytes == null}")
 
                         // Can fail to create the image decoder if its not implemented for the image type
                         val bitmap: Bitmap? =
                             BitmapFactory.decodeByteArray(bytes, 0, bytes?.size ?: 0)
-                        println("BITMAP EMPTY: ${bitmap == null}")
                         bitmap?.let {
                             val rawBitmap = centerCrop(bitmap, 224)
                             val inputShape = longArrayOf(1, 3, 224, 224)
@@ -101,7 +94,6 @@ class ORTImageViewModel(application: Application) : AndroidViewModel(application
                                     @Suppress("UNCHECKED_CAST") var rawOutput =
                                         ((output?.get(0)?.value) as Array<FloatArray>)[0]
                                     rawOutput = normalizeL2(rawOutput)
-
                                     repository.addImageEmbedding(
                                         ImageEmbedding(
                                             id, date, rawOutput
@@ -114,17 +106,14 @@ class ORTImageViewModel(application: Application) : AndroidViewModel(application
                             }
                         }
                     }
-                    // record created/loaded
-                    // update progress
+                    // Record created/loaded, update progress
                     progress.value = it.position.toDouble() / totalImages.toDouble()
-
                 }
             }
             cursor?.close()
             session.close()
             progress.setValue(1.0)
         }
-
     }
 }
 
