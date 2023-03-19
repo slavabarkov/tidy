@@ -1,5 +1,5 @@
 # TIDY - Text-to-Image Discovery
-<a href='https://github.com/slavabarkov/tidy/releases/download/1.0/tidy-release.apk'><img src='res/banner-apk.jpg' alt='Download for Android' height='55'/></a>
+<a href='https://github.com/slavabarkov/tidy/releases/download/1.0/tidy-release.apk'><img src='res/banner-apk.jpg' alt='Download for Android' height='50'/></a>
 
 Offline Text-to-Image and Image-to-Image search on your phone powered by the state-of-the-art large-scale vision-language pretrained CLIP model!</br></br>
 <div style="display:flex;">
