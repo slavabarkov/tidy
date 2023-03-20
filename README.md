@@ -1,7 +1,8 @@
 # TIDY - Text-to-Image Discovery
 <a href='https://github.com/slavabarkov/tidy/releases/download/1.0/tidy-release.apk'><img src='res/banner-apk.jpg' alt='Download for Android' height='50'/></a>
 
-Offline semantic Text-to-Image and Image-to-Image search on your Android phone powered by the state-of-the-art large-scale vision-language pretrained CLIP model!</br></br>
+Offline semantic Text-to-Image and Image-to-Image search on your Android phone! Powered by quantized state-of-the-art large-scale vision-language pretrained CLIP model and ONNX Runtime inference engine.
+</br>
 <div style="display:flex;">
 <img alt="Text-to-Image Search" src="res/text-to-image.jpg" width="50%"><img alt="Image-to-Image Search" src="res/image-to-image.jpg" width="50%">
 </div>
