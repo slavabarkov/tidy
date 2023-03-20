@@ -23,7 +23,29 @@ During the first launch TIDY will need to scan through your photo library and cr
 TIDY works entirely offline, ensuring your privacy and security are never compromised. None of your data or images are ever uploaded to a remote server or shared with third parties, ensuring your personal information stays safe and secure.  It also means that you can use it anytime, anywhere, even in areas with poor or no internet connectivity.
 
 ### Text-to-Image Search
+
+<details>
+<summary>Video demonstration</summary>
+<video src="https://user-images.githubusercontent.com/46378663/226463103-f146f4a6-79fa-4d6a-8371-af45db431ba5.mp4"></video>
+</details>
+
 Simply type in a description of the image you are looking for, and TIDY will retrieve the most relevant matches from your local image library. Text-to-Image search functionality in TIDY goes beyond traditional keyword-based searches! You can use longer and more detailed descriptions to find the exact image you have in mind.
 
 ### Image-to-Image Search
+
+<details>
+<summary>Video demonstration</summary>
+<video src="https://user-images.githubusercontent.com/46378663/226463174-93071c91-dfa1-4ece-9b15-194fd8fc3c5b.mp4"></video>
+</details>
+
 Search for visually similar images by choosing a photo from your device's gallery. TIDY will analyze the image and retrieve images with similar visual features, allowing you to explore and discover new images in a whole new way.
+
+## Citation
+```bibtex
+@Misc{tidy,
+  title =        {TIDY (Text-to-Image Discovery): Offline Semantic Text-to-Image and Image-to-Image Search on Android Powered by the Vision-Language Pretrained CLIP Model.},
+  author =       {Viacheslav Barkov},
+  howpublished = {\url{https://github.com/slavabarkov/tidy}},
+  year =         {2023}
+}
+```
