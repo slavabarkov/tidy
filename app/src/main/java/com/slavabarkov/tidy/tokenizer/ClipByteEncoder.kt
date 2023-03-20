@@ -1,5 +1,6 @@
 /**
  * Copyright 2023 Viacheslav Barkov
+ * Copyright 2020 The HuggingFace Team
  *
  * The following code is a derivative work of the code from the TensorFlow Lite Transformers
  * with Android project, which is licensed Apache 2.0
