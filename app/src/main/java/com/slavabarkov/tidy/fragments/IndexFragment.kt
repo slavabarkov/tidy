@@ -40,7 +40,13 @@ class IndexFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_index, container, false)
         activity?.window?.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        permissionsRequest.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        // Request required permissions depending on the Android version
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            permissionsRequest.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
+        }
+        else {
+            permissionsRequest.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
 
         progressBarView = view.findViewById(R.id.progressBar)
         progressBarTextView = view.findViewById(R.id.progressBarText)
