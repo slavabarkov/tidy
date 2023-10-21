@@ -1,5 +1,9 @@
 # TIDY - Text-to-Image Discovery
+<div style="display:flex;">
 <a href='https://github.com/slavabarkov/tidy/releases/latest/download/tidy-release.apk'><img src='res/banner-apk.jpg' alt='Download for Android' height='50'/></a>
+<a href='https://f-droid.org/packages/com.slavabarkov.tidy/'><img src='res/banner-fdroid.png' alt='Get it on F-Droid' height='50'/></a>
+</div>
+</br>
 
 Offline semantic Text-to-Image and Image-to-Image search on your Android phone! Powered by quantized state-of-the-art large-scale vision-language pretrained CLIP model and ONNX Runtime inference engine.
 </br>
