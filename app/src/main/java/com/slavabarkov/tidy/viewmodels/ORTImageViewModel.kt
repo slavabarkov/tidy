@@ -13,6 +13,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import androidx.lifecycle.*
 import com.slavabarkov.tidy.R
 import com.slavabarkov.tidy.centerCrop
@@ -23,6 +24,7 @@ import com.slavabarkov.tidy.normalizeL2
 import com.slavabarkov.tidy.preProcess
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.IOException
 import java.util.*
 
 class ORTImageViewModel(application: Application) : AndroidViewModel(application) {
@@ -31,6 +33,8 @@ class ORTImageViewModel(application: Application) : AndroidViewModel(application
     var idxList: ArrayList<Long> = arrayListOf()
     var embeddingsList: ArrayList<FloatArray> = arrayListOf()
     var progress: MutableLiveData<Double> = MutableLiveData(0.0)
+
+    private val TAG: String = ORTImageViewModel::class.java.simpleName
 
     init {
         val imageEmbeddingDao = ImageEmbeddingDatabase.getDatabase(application).imageEmbeddingDao()
@@ -74,8 +78,16 @@ class ORTImageViewModel(application: Application) : AndroidViewModel(application
                     } else {
                         val imageUri: Uri = Uri.withAppendedPath(uri, id.toString())
                         val inputStream = contentResolver.openInputStream(imageUri)
-                        val bytes = inputStream?.readBytes()
-                        inputStream?.close()
+                        val bytes: ByteArray?
+
+                        try {
+                            bytes = inputStream?.readBytes()
+                        } catch (ex: IOException) {
+                            Log.w(TAG, "IOException occurred while reading file (ID: $id, date: $date, bucket: \"$bucket\")")
+                            continue
+                        } finally {
+                            inputStream?.close()
+                        }
 
                         // Can fail to create the image decoder if its not implemented for the image type
                         val bitmap: Bitmap? =
