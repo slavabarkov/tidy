@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TIDY</string>
+    <string name="search_text">例如「Black cat sitting on a table」</string>
+    <string name="search_button">搜尋</string>
+    <string name="clear_button">清空</string>
+    <string name="progress_bar_text">正在更新圖像索引</string>
+</resources>

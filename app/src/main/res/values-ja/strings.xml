@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TIDY</string>
+    <string name="search_text">例えば「Black cat sitting on a table」</string>
+    <string name="search_button">探す</string>
+    <string name="clear_button">クリア</string>
+    <string name="progress_bar_text">画像インデックスを更新中</string>
+</resources>
