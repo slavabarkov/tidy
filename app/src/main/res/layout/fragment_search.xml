@@ -8,53 +8,66 @@
     tools:context=".fragments.SearchFragment"
     >
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="12dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="e.g. &quot;Black cat sitting on a table&quot;"
-            android:inputType="textWebEditText|text" />
+            android:hint="@string/search_text"
+            android:inputType="textWebEditText|text"
+            />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="6dp">
 
-            <Button
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/searchButton"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search" />
+                android:text="@string/search_button"
+                android:layout_marginHorizontal="4dp"
+                app:cornerRadius="@dimen/buttonRadius"
+                />
 
             <Space
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                  />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/clearButton"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clear" />
-        </LinearLayout>
+                android:text="@string/clear_button"
+                android:layout_marginHorizontal="4dp"
+                android:layout_toEndOf="@+id/searchButton"
+                app:cornerRadius="@dimen/buttonRadius"
+                />
+        </RelativeLayout>
 
 
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
+        android:layout_marginTop="10dp"
         app:layoutManager="GridLayoutManager"
         app:spanCount="3" />
 

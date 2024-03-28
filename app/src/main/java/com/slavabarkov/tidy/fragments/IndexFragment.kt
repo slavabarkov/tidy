@@ -4,6 +4,7 @@
 
 package com.slavabarkov.tidy.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,8 +42,10 @@ class IndexFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_index, container, false)
         activity?.window?.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         // Request required permissions depending on the Android version
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            permissionsRequest.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                permissionsRequest.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
+            }
         }
         else {
             permissionsRequest.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -54,7 +57,10 @@ class IndexFragment : Fragment() {
         mORTImageViewModel.progress.observe(viewLifecycleOwner) { progress ->
             var progressPercent: Int = (progress * 100).toInt()
             progressBarView?.progress = progressPercent
-            progressBarTextView?.text = "Updating image index: ${progressPercent}%"
+
+            //Reference progress_bar_text in strings.xml for better localisation.
+            val myString = getString(R.string.progress_bar_text)
+            "${myString}: ${progressPercent}%".also { progressBarTextView?.text = it }
 
             if (progress == 1.0) {
                 activity?.window?.clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)

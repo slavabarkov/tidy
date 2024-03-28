@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TIDY"
         tools:targetApi="31"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:windowSoftInputMode="adjustResize">
         <activity
             android:name=".MainActivity"
             android:exported="true"

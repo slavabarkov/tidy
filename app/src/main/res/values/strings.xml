@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TIDY</string>
+    <string name="progress_bar_text">Updating image index</string>
+    <string name="search_text">e.g. “Black cat sitting on a table”</string>
+    <string name="search_button">SEARCH</string>
+    <string name="clear_button">CLEAR</string>
 </resources>
