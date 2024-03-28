@@ -12,8 +12,10 @@ android {
         applicationId "com.slavabarkov.tidy"
         minSdk 26
         targetSdk 33
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2.1"
+        // Naming app bundles/APKs
+        setArchivesBaseName("TIDY-${versionName}-c${versionCode}")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
